@@ -1,0 +1,125 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="CourseRegistration.Site" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+    <title>University Course Registration</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .sidebar {
+            width: 220px;
+            background-color: #2e7d32; /* Dark green */
+            color: white;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            padding: 20px 10px;
+        }
+
+        .sidebar img {
+            display: block;
+            margin: 0 auto 10px auto;
+            max-width: 120px;
+            height: auto;
+        }
+
+        .sidebar h3 {
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            margin-bottom: 5px;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+
+        .sidebar a:hover {
+            background-color: #388e3c; /* Lighter green */
+        }
+
+        .topbar {
+            margin-left: 220px;
+            padding: 10px 20px;
+            background-color: #e0f2f1; /* Light greenish background */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .main-content {
+            margin-left: 220px;
+            padding: 20px;
+        }
+
+        .badge {
+            padding: 3px 7px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+        .bg-danger {
+            background-color: red;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="sidebar">
+            <!-- ✅ Logo -->
+            <img src="Images/log.png" alt="University Logo" />
+            <h3>University Course Registration</h3>
+
+            <!-- ✅ Student Links -->
+            <asp:Panel ID="studentLinks" runat="server" Visible="true">
+                <asp:HyperLink ID="lnkDashboard" runat="server" NavigateUrl="StudentDashboard.aspx">Dashboard</asp:HyperLink>
+                <asp:HyperLink ID="lnkRegistration" runat="server" NavigateUrl="CourseRegistration.aspx">Course Registration</asp:HyperLink>
+                <asp:HyperLink ID="lnkManage" runat="server" NavigateUrl="ManageCourseRegistration.aspx">Manage Course</asp:HyperLink>
+                <asp:HyperLink ID="lnkTimetable" runat="server" NavigateUrl="ViewTimetable.aspx">View Timetable</asp:HyperLink>
+                <asp:HyperLink ID="lnkDrop" runat="server" NavigateUrl="DropCourse.aspx">Drop Course</asp:HyperLink>
+            </asp:Panel>
+
+            <!-- ✅ Admin Links -->
+            <asp:Panel ID="adminLinks" runat="server" Visible="false">
+                <hr />
+                <asp:HyperLink ID="lnkAdmin" runat="server" NavigateUrl="AdminDashboard.aspx">Dashboard</asp:HyperLink>
+                <asp:HyperLink ID="lnkManageCourses" runat="server" NavigateUrl="ManageCourses.aspx">Manage Courses</asp:HyperLink>
+                <asp:HyperLink ID="lnkApprove" runat="server" NavigateUrl="ApproveRegistrations.aspx">Approve Registrations</asp:HyperLink>
+                <asp:HyperLink ID="lnkLecturers" runat="server" NavigateUrl="AssignLecturer.aspx">Assign Lecturers</asp:HyperLink>
+                <asp:HyperLink ID="lnkNewLecturer" runat="server" NavigateUrl="EditLecturer.aspx">Add Lecturers</asp:HyperLink>
+            </asp:Panel>
+
+            <hr />
+            <asp:HyperLink ID="lnkAccount" runat="server" NavigateUrl="ManageAccount.aspx">Manage Account</asp:HyperLink>
+            <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/Login.aspx" />
+        </div>
+
+        <div class="topbar">
+            <asp:Label ID="lblWelcome" runat="server" Text="Welcome!" />
+            &nbsp;<asp:Label ID="lblRole" runat="server" ForeColor="Gray" />
+        </div>
+
+        <div class="main-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+    </form>
+</body>
+</html>
